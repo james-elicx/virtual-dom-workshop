@@ -1,0 +1,29 @@
+{
+	"name": "virtual-dom-workshop",
+	"private": true,
+	"scripts": {
+		"build:jsx-runtime": "bun build ./stage-1.ts --outfile app/jsx-runtime && bun build ./stage-1.ts --outfile app/jsx-dev-runtime",
+		"---": "",
+		"build:stage-1": "bun run build:jsx-runtime && bun x esbuild ./app/stage-1.tsx --bundle --jsx-import-source=../app --outfile=./app/index.js",
+		"stage-1": "bun run build:stage-1 && bun run ./app/index.js --watch",
+		"----": "",
+		"build:stage-2": "bun run build:jsx-runtime && bun x esbuild ./app/stage-2.tsx --bundle --jsx-import-source=../app --outfile=./app/index.js",
+		"stage-2": "bun run build:stage-2 && bun run ./app/index.html --watch",
+		"-----": "",
+		"build:stage-3": "bun run build:jsx-runtime && bun x esbuild ./app/stage-3.tsx --bundle --jsx-import-source=../app --outfile=./app/index.js",
+		"stage-3": "bun run build:stage-3 && bun run ./app/index.html --watch",
+		"------": "",
+		"build:stage-4": "bun run build:jsx-runtime && bun x esbuild ./app/stage-4.tsx --bundle --jsx-import-source=../app --outfile=./app/index.js",
+		"stage-4": "bun run build:stage-4 && bun run ./app/index.html --watch",
+		"-------": ""
+	},
+	"devDependencies": {
+		"@types/bun": "latest"
+	},
+	"peerDependencies": {
+		"typescript": "^5"
+	},
+	"dependencies": {
+		"esbuild": "^0.27.0"
+	}
+}
