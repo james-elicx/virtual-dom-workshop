@@ -36,7 +36,8 @@ const createDOMElement = (node: Node): HTMLElement | Text => {
 const renderChildren = (newNode: Node, children: Node[]) => {
 	for (const child of children) {
 		if (typeof child.type === 'function') {
-			child.funcNode = child.type(child.props);
+			renderChildren(newNode, [child.type(child.props)]);
+			continue;
 		}
 
 		renderNode(child);
